@@ -1,17 +1,23 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import dotenv from 'dotenv';
 
+import dotenv from 'dotenv';
+import authRouter from "./routes/authRoute.js"; // Corrected import path
+import bodyParser from 'body-parser';
 // Load environment variables from .env file
 dotenv.config();
 
-
-
 const app = express();
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:false}));
+// Register the authRouter middleware
+app.use('/api/auth', authRouter);
+
 
 
 // Connect to MongoDB
-mongoose.connect("mongodb://localhost:27017/real-estate").then(() => {
+mongoose.connect("mongodb://localhost:27017/realEstate").then(() => {
   console.log('Connected to MongoDB');
 }).catch((err) => {
   console.error('Error connecting to MongoDB', err);

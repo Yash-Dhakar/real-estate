@@ -14,10 +14,10 @@ export default function Header() {
                     <FaSearch className='text-slate-500 text-xl'></FaSearch>
                 </form>
                 <ul className='flex gap-4 text-xl font-semibold text-slate-600'>
-                    <Navlink to="/"> <li className='hidden md:inline-block hover:underline mb-2'>Home</li></Navlink>
-                    <Navlink to="/about"> <li className='hidden md:inline-block hover:underline mb-2'>About</li></Navlink>
-                    <Navlink to="/signin">
-                        <li className='hover:underline mb-2 underline-offset'>Sign in</li></Navlink>
+                    <NavLink to="/"> <li className='hidden md:inline-block hover:underline mb-2'>Home</li></NavLink>
+                    <NavLink to="/about"> <li className='hidden md:inline-block hover:underline mb-2'>About</li></NavLink>
+                    <NavLink to="/signin">
+                        <li className='hover:underline mb-2 underline-offset'>Sign in</li></NavLink>
 
 
                 </ul>
