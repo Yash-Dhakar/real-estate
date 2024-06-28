@@ -1,9 +1,23 @@
-import React from 'react'
+import React from 'react';
+import { BrowserRouter,Routes,Route } from 'react-router-dom';
+import Home from './components/Home';
+import About from './components/About';
+import Profile from './components/Profile';
+import Signin from './components/Signin';
+import Signup from './components/Signup';
 
 function App() {
   return (
     <div>
-      <h1 className='bg-red'>Heading 1</h1> 
+       <BrowserRouter>
+       <Routes>
+        <Route path='/' element={<Home/>} ></Route>
+        <Route path='/about' element={<About/>} ></Route>
+        <Route path='/profile' element={<Profile/>} ></Route>
+        <Route path='/signin' element={<Signin/>} ></Route>
+        <Route path='/signup' element={<Signup/>} ></Route>
+       </Routes>
+       </BrowserRouter>
     </div>
   )
 }
