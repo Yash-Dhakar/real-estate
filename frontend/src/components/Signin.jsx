@@ -13,6 +13,7 @@ function Signin() {
   
   const dispatch = useDispatch();
   const {loading,error} = useSelector((state) => state.user);
+  console.log(useSelector((state) => state.user));
 
 //   console.log(userData);
   const userDetails = {
