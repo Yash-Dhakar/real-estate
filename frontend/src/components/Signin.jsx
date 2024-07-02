@@ -7,11 +7,13 @@ import { toast, ToastContainer, Bounce } from "react-toastify";
 import { signinStart, signInSuccess, signInFailure } from "../redux/userSlice";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
+import QAuth from "./QAuth";
 function Signin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   
   const dispatch = useDispatch();
+  const navigate=useNavigate();
   const {loading,error} = useSelector((state) => state.user);
   console.log(useSelector((state) => state.user));
 
@@ -28,6 +30,7 @@ function Signin() {
       .then((res) => {
         dispatch(signInSuccess(res.data));
         console.log(res.data);
+        navigate("/");
       })
       .catch((err) => {
         dispatch(signInFailure(err.message));
@@ -54,7 +57,7 @@ function Signin() {
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="Username"
+          placeholder="Email"
           className="border rounded-lg p-3"
         />
         <input
@@ -71,6 +74,7 @@ function Signin() {
       >
         Sign In
       </button>
+      <QAuth/>
       <div className="text-lg flex space-x-3">
         <p>Don't have an account?</p>
         <Link to="/signup" className="text-blue-700">

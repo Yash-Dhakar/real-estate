@@ -5,6 +5,7 @@ import axios from 'axios';
 import { signup } from '../apiEndpoint';
 import { ToastContainer, toast,Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import QAuth from './QAuth';
 
 function Signup() {
   const navigate=useNavigate();
@@ -32,6 +33,7 @@ function Signup() {
         setPassword("");
         setLoading(false);
         setError(null);
+        navigate('/signin');
         toast.success('Signp Done Successfully', {
           position: "top-center",
           autoClose: 3000,
@@ -82,8 +84,9 @@ function Signup() {
       <button className='bg-slate-700 text-white p-3 rounded-lg' onClick={handleSubmit}>
           SIGNUP
         </button>
+      <QAuth/>
       <div className='flex space-x-2'>
-        <p>Have an account?</p>
+        <p> Aleady have an account?</p>
         <Link to="/signin" className='text-blue-600'>Sign in</Link>
       </div>
       <ToastContainer />

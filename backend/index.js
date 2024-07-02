@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 import authRouter from "./routes/authRoute.js"; // Corrected import path
 import bodyParser from 'body-parser';
 import cors from "cors";
+import userRouter from "./routes/userRoute.js";
 // Load environment variables from .env file
 dotenv.config();
 
@@ -16,6 +17,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 // Register the authRouter middleware
 app.use('/api/auth', authRouter);
+app.use('/api/user', userRouter);
 
 
 

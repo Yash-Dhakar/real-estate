@@ -56,3 +56,54 @@ export const signin = async (req, res) => {
         return res.status(500).json({ status: "Internal Server Error" });
     }
 };
+
+
+
+
+export const google = async (req, res) => {
+    const { email, name, avatar } = req.body;
+
+    // Validate request body
+    if (!email || !name || !avatar) {
+        return res.status(400).json({ status: "Bad Request", message: "Missing required fields" });
+    }
+
+    try {
+        let user = await User.findOne({ email: email });
+
+        if (!user) {
+            // New user
+            const username = name.replaceAll(" ", "_") + Math.floor(Math.random() * 1000) + 1;
+            const password = rs.generate();
+
+            user = await User.create({
+                username: username,
+                email: email,
+                password: password,
+                avatar: avatar
+            });
+        }
+
+        // Common logic for both existing and new users
+        const payload = { id: user._id }; // Use user ID as payload
+        const key = rs.generate();
+        const token = jwt.sign(payload, key);
+
+        return res.cookie('access_token', token, { httpOnly: true })
+                  .status(200)
+                  .json(user);
+
+    } catch (err) {
+        console.error("Error:", err);
+        return res.status(500).json({ status: "Internal Server Error", message: err.message });
+    }
+};
+
+export const signOut = async (req, res, next) => {
+    try {
+      res.clearCookie('access_token');
+      res.status(200).json('User has been logged out!');
+    } catch (error) {
+      res.status(500).json({"status":"Internal server err"});
+    }
+  };
