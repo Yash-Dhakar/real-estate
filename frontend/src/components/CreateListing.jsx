@@ -145,6 +145,7 @@ function CreateListing() {
         setError(error.message);
 
         setLoading(false);
+        return 
     }
   )
        

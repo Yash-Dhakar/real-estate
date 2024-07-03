@@ -10,7 +10,7 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import { app } from "../firebase";
-import { update,deleteAPI,signOut } from "../apiEndpoint";
+import { update,deleteAPI,signOut,getListings } from "../apiEndpoint";
 import { updateStart, updateSuccess, updateFailure, signInSuccess ,deleteStart,deleteFailure,deleteSuccess} from "../redux/userSlice";
 import { ToastContainer, toast, Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -25,6 +25,9 @@ function Profile() {
   const [username, setUserName] = useState(currentUser.username);
   const [email, setEmail] = useState(currentUser.email);
   const [password, setPassword] = useState('');
+  const [showListingsError, setShowListingsError] = useState(false);
+  const [userListings, setUserListings] = useState([]);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const fileInputRef = useRef();
@@ -164,6 +167,27 @@ function Profile() {
       });
   };
 
+  const showListings=(e)=>{
+    e.preventDefault();
+    setShowListingsError(false);
+    
+    axios.get(getListings +`?userRef=${currentUser._id}`)
+    .then(
+      (res)=>{
+        setUserListings(res.data);
+      }
+      
+    )
+    .catch(
+      (err)=>{
+       console.log("Error fecthing listings",err);
+       setShowListingsError(true);
+      }
+    )
+  }
+
+  
+
   useEffect(() => {
     if (file) {
       if (file.size < (2 * 1024 * 1024)) {
@@ -239,8 +263,28 @@ function Profile() {
         <Link className="text-red-700 text-xl font-medium" onClick={deleteUser}>Delete Account</Link>
         <Link className="text-red-700 text-xl font-medium" onClick={handleSignOut} >Sign Out</Link>
       </div>
-      <Link className="text-green-700 text-xl self-center">CREATE LISTING</Link>
+      <Link className="text-green-700 text-xl self-center" onClick={showListings} >SHOW LISTING</Link>
+
       <ToastContainer />
+      <p>{showListingsError?'Error showing listings' : ''}</p>{
+        userListings.length>0?
+        userListings.map(
+          (listing)=>(
+           <div className="border border-lg shadow-md p-3 flex justify-between items-center gap-5">
+           <Link> <img src={listing.imageUrls[0]} className='h-16 w-16 object-contain'alt="" /></Link>
+          <Link className='text-slate-700 font-semibold  hover:underline truncate flex-1'><p >{listing.name}</p></Link>
+          <div className="flex gap-2 flex-col md:flex-row">
+            <button className="border px-4 py-2 rounded-2xl text-white bg-blue-500">Edit</button>
+            <button className="border p-2 rounded-2xl text-black bg-red-600">Delete</button>
+          </div>
+
+
+           </div>
+          )
+        )
+        :''
+      }
+      
     </div>
   );
 }
