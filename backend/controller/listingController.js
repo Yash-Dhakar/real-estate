@@ -33,4 +33,79 @@ export const getListing = async (req, res) => {
       return res.status(500).json({ status: "Internal Server Error", message: error.message });
     }
   };
+
+
+  export const getListingById = async (req, res) => {
+    try {
+        const {_id} = req.query; 
+  
+      if (!_id) {
+        return res.status(400).json({ status: "Bad Request", message: "Missing listing id " });
+      }
+  
+      const listing = await Listing.findById(_id);
+  
+      if (listing ) {
+        return res.status(200).json(listing);
+      } else {
+        return res.status(404).json({ error: "No listing found for the provided user Id" });
+      }
+    } catch (error) {
+      return res.status(500).json({ status: "Internal Server Error", message: error.message });
+    }
+  };
+ 
+
+  
+  export const updateListing = async (req, res) => {
+    try {
+      const { userRef, _id, ...updateData } = req.body;
+  
+      if (!userRef || !_id) {
+        return res.status(400).json({ status: "Bad Request", message: "Missing userRef or listing Id" });
+      }
+  
+      const listing = await Listing.findById(_id);
+  
+      if (listing) {
+        const updatedListing = await Listing.findByIdAndUpdate(
+          _id,
+          { $set: updateData },
+          { new: true }
+        );
+        return res.status(200).json(updatedListing);
+      } else {
+        return res.status(404).json({ error: "No listing found for the provided listing Id" });
+      }
+    } catch (error) {
+      return res.status(500).json({ status: "Internal Server Error", message: error.message });
+    }
+  };
+  
+
+  
+  export const deleteListing = async (req, res) => {
+    try {
+      const { userRef, _id } = req.body;
+  
+      if (!userRef || !_id) {
+        return res.status(400).json({ status: "Bad Request", message: "Missing userRef or listing Id" });
+      }
+  
+      const listing = await Listing.findById(_id);
+  
+      if (listing) {
+        const deletedListing = await Listing.findByIdAndDelete(_id);
+        return res.status(200).json({status:"Listing deleted successfully"});
+      } else {
+        return res.status(404).json({ error: "No listing found for the provided listing Id" });
+      }
+    } catch (error) {
+      return res.status(500).json({ status: "Internal Server Error", message: error.message });
+    }
+  };
+  
+
+
+  
   

@@ -186,6 +186,15 @@ function Profile() {
     )
   }
 
+  const handleDeleteListing=(_id)=>{
+    const userData={
+       _id:_id,
+       userRef:currentUser.userRef
+    }
+    console.log(userData);
+
+  }
+
   
 
   useEffect(() => {
@@ -271,11 +280,11 @@ function Profile() {
         userListings.map(
           (listing)=>(
            <div className="border border-lg shadow-md p-3 flex justify-between items-center gap-5">
-           <Link> <img src={listing.imageUrls[0]} className='h-16 w-16 object-contain'alt="" /></Link>
-          <Link className='text-slate-700 font-semibold  hover:underline truncate flex-1'><p >{listing.name}</p></Link>
+           <Link to={`/show-listing/${listing._id}`}> <img src={listing.imageUrls[0]} className='h-16 w-16 object-contain'alt="" /></Link>
+          <Link  to={`/show-listing/${listing._id}`} className='text-slate-700 font-semibold  hover:underline truncate flex-1'><p >{listing.name}</p></Link>
           <div className="flex gap-2 flex-col md:flex-row">
-            <button className="border px-4 py-2 rounded-2xl text-white bg-blue-500">Edit</button>
-            <button className="border p-2 rounded-2xl text-black bg-red-600">Delete</button>
+            <button type='button' className="border px-4 py-2 rounded-2xl text-white bg-blue-500"  onClick={()=>navigate(`/update-listing/${listing._id}`)}>Edit</button>
+            <button type='button' className="border p-2 rounded-2xl text-black bg-red-600" onClick={handleDeleteListing(listing._id)}>Delete</button>
           </div>
 
 

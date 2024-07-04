@@ -1,13 +1,16 @@
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { app } from '../firebase';
 import { useSelector } from 'react-redux';
-import { createListing } from '../apiEndpoint';
+import { createListing,getListingById, update, updateListingApi } from '../apiEndpoint';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 
-function CreateListing() {
+import { useNavigate ,useParams} from 'react-router-dom';
+
+function UpdateListing() {
   const {currentUser}=useSelector(state=>state.user) ; 
+  const params=useParams();
+  const {listingId}=params;
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [address, setAddress] = useState('');
@@ -25,6 +28,34 @@ function CreateListing() {
   const [loading,setLoading]=useState(false);
   const [error,setError]=useState(null);
   const [uploading, setUploading] = useState(false);
+
+
+useEffect(
+    ()=>{
+        axios.get(getListingById+`?_id=${listingId}`)
+        .then(
+            (res)=>{
+                 console.log(res.data);
+                 setName(res.data.name);
+                 setDescription(res.data.description);
+                 setAddress(res.data.address);
+                 setType(res.data.type);
+                 setParking(res.data.parking);
+                 setFurnished(res.data.furnished);
+                 setOffer(res.data.offer);
+                 setBedrooms(res.data.bedrooms);
+                 setBathrooms(res.data.bathrooms);
+                 setRegularPrice(res.data.regularPrice);
+                 setDiscountedPrice(res.data.discountedPrice);
+                 setImageURL(res.data.imageUrls);
+
+
+            }
+        )
+    },[]
+)
+
+  console.log("listingId",listingId);
 
   const navigate=useNavigate();
 
@@ -117,6 +148,7 @@ function CreateListing() {
     setError(false);
     const listingDetails={
         userRef:currentUser._id,
+        _id:listingId,
         name:name,
         description:description,
         address:address,
@@ -131,13 +163,12 @@ function CreateListing() {
         imageUrls:imageUrls
     }
     console.log(listingDetails);
-    axios.post(createListing,listingDetails)
+    axios.post(updateListingApi,listingDetails)
     .then(
         (res)=>{
             console.log(res.data);
             setLoading(false);
-            const listingId=res.data._id;
-            navigate(`/show-listing/${listingId}`);
+            navigate('/show-listing' );
 
         }
     )
@@ -226,7 +257,7 @@ function CreateListing() {
           </p>
 
           <button type='button' disabled={loading || uploading}    className='text-white bg-slate-700 p-4 rounded-lg disabled:bg-slate-300' onClick={handleSubmit}>
-          {loading ? 'Creating...' : 'Create listing'}
+          {loading ? 'Updating...' : 'Create Updatting'}
 
           </button>
           {error && <p className='text-red-700 text-sm'>{error}</p>}
@@ -236,4 +267,4 @@ function CreateListing() {
   );
 }
 
-export default CreateListing;
+export default UpdateListing;
