@@ -25,10 +25,11 @@ function App() {
         <Route path='/about' element={<About/>} ></Route>
         <Route path='/signin' element={<Signin/>} ></Route>
         <Route path='/signup' element={<Signup/>} ></Route>
+        <Route path='/show-listing/:listingId' element={<Listing/>} />
         <Route element={<PrivateRoute />}>
           <Route path='/profile' element={<Profile />} />
           <Route path='/create-listing' element={<CreateListing />} />
-          <Route path='/show-listing/:listingId' element={<Listing/>} />
+
           <Route path='/update-listing/:listingId' element={<UpdateListing/>} />
           <Route></Route>
        
