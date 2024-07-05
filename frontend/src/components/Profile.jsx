@@ -260,19 +260,19 @@ function Profile() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit" className="bg-slate-700 text-white p-4 rounded-lg font-medium">
+        <button type="submit" className="bg-slate-700 text-white p-4 rounded-lg font-medium transition-all ease-in-out duration-100 hover:opacity-85">
           UPDATE
         </button>
       </form>
-      <Link to='/create-listing' className="bg-green-700 text-white p-4 rounded-lg font-medium text-center">
+      <Link to='/create-listing' className="bg-green-700 text-white p-4 rounded-lg font-medium text-center transition-all ease-in-out duration-100 hover:opacity-85">
         CREATE LISTING
       </Link>
       <div className="flex justify-between">
     
-        <Link className="text-red-700 text-xl font-medium" onClick={deleteUser}>Delete Account</Link>
-        <Link className="text-red-700 text-xl font-medium" onClick={handleSignOut} >Sign Out</Link>
+        <Link className="text-red-700 text-xl font-medium transition-all ease-in-out duration-100 hover:opacity-85" onClick={deleteUser}>Delete Account</Link>
+        <Link className="text-red-700 text-xl font-medium transition-all ease-in-out duration-100 hover:opacity-85" onClick={handleSignOut} >Sign Out</Link>
       </div>
-      <Link className="text-green-700 text-xl self-center" onClick={showListings} >SHOW LISTING</Link>
+      <Link className="text-green-700 text-xl self-center transition-all ease-in-out duration-100 hover:opacity-85" onClick={showListings} >SHOW LISTING</Link>
 
       <ToastContainer />
       <p>{showListingsError?'Error showing listings' : ''}</p>{
@@ -283,8 +283,8 @@ function Profile() {
            <Link to={`/show-listing/${listing._id}`}> <img src={listing.imageUrls[0]} className='h-16 w-16 object-contain'alt="" /></Link>
           <Link  to={`/show-listing/${listing._id}`} className='text-slate-700 font-semibold  hover:underline truncate flex-1'><p >{listing.name}</p></Link>
           <div className="flex gap-2 flex-col md:flex-row">
-            <button type='button' className="border px-4 py-2 rounded-2xl text-white bg-blue-500"  onClick={()=>navigate(`/update-listing/${listing._id}`)}>Edit</button>
-            <button type='button' className="border p-2 rounded-2xl text-black bg-red-600" onClick={handleDeleteListing(listing._id)}>Delete</button>
+            <button type='button' className="border px-4 py-2 rounded-2xl text-white bg-blue-500 transition-all ease-in-out duration-100 hover:opacity-85"  onClick={()=>navigate(`/update-listing/${listing._id}`)}>Edit</button>
+            <button type='button' className="border p-2 rounded-2xl text-black bg-red-600 transition-all ease-in-out duration-100 hover:opacity-85"  onClick={handleDeleteListing(listing._id)}>Delete</button>
           </div>
 
 

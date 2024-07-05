@@ -1,0 +1,56 @@
+Name: Green Valley Estates
+Description: Nestled in a serene neighborhood, Green Valley Estates offers spacious homes with lush gardens and modern amenities. Ideal for families seeking tranquility and comfort.
+Selling Price: $500,000
+Discounted Price: $475,000
+
+Name: Riverside Residences
+Description: Riverside Residences boasts breathtaking views of the river and contemporary design. Enjoy luxury living with top-notch facilities and easy access to city life.
+Selling Price: $650,000
+Discounted Price: $620,000
+
+Name: Sunset Villas
+Description: Experience the beauty of coastal living at Sunset Villas. These charming homes offer stunning ocean views, modern interiors, and close proximity to the beach.
+Selling Price: $750,000
+Discounted Price: $710,000
+
+Name: Mountainview Retreat
+Description: Mountainview Retreat provides a peaceful escape with its picturesque mountain backdrop. Perfect for nature enthusiasts, this estate features cozy homes and outdoor activities.
+Selling Price: $450,000
+Discounted Price: $425,000
+
+Name: Urban Oasis
+Description: Located in the heart of the city, Urban Oasis combines convenience and style. These modern apartments offer luxurious living spaces and easy access to urban amenities.
+Selling Price: $800,000
+Discounted Price: $760,000
+
+Name: Lakeside Haven
+Description: Lakeside Haven is a tranquil community by the lake, offering beautiful homes with scenic views and recreational facilities. Ideal for those seeking a peaceful lifestyle.
+Selling Price: $550,000
+Discounted Price: $520,000
+
+Name: Country Meadows
+Description: Enjoy the charm of rural living at Country Meadows. This estate features spacious homes, green pastures, and a friendly community atmosphere.
+Selling Price: $400,000
+Discounted Price: $380,000
+
+Name: Hilltop Manor
+Description: Hilltop Manor offers luxury homes with panoramic views of the city skyline. Enjoy the perfect blend of elegance and modernity in this prestigious estate.
+Selling Price: $900,000
+Discounted Price: $850,000
+
+Name: Garden Grove Estates
+Description: Garden Grove Estates features beautifully landscaped gardens and well-designed homes. A perfect setting for families looking for comfort and convenience.
+Selling Price: $600,000
+Discounted Price: $570,000
+
+Name: Seaside Cottages
+Description: Seaside Cottages offer charming homes with easy access to the beach. Experience coastal living at its best with stunning sea views and a relaxed atmosphere.
+Selling Price: $700,000
+Discounted Price: $665,000
+
+
+
+
+
+
+

@@ -100,14 +100,13 @@ function Listing() {
             </p>
           )}
           <div className='flex flex-col gap-6 p-3 my-7 max-w-4xl mx-auto'>
-           <p className='text-3xl font-semibold my-4'>
-            {listing.name}   -${
-              " " + Math.min(listing.regularPrice,listing.discountedPrice)
-            }
-            {
-                listing.type=="rent"?" /month":null
-            }
-           </p>
+        
+  <p className='text-3xl font-semibold my-4'>
+    {listing.name} - $
+    {listing.offer ? listing.discountedPrice : listing.regularPrice}
+    {listing.type === "rent" ? " /month" : null}
+  </p>
+
         
            <p className='flex gap-2 items-center'>
             <FaMapMarkerAlt className='text-green-700 text-'>
@@ -118,9 +117,9 @@ function Listing() {
            <button className='border bg-red-800 rounded-lg text-white px-[70px] py-3'>For
            {listing.type=="rent"?" Rent":' Sell'}  </button>
            {
-            listing.regularPrice>listing.discountedPrice?
-            <button className='border bg-green-900 rounded-lg text-white px-[70px] py-3'> $ {listing.regularPrice-listing.discountedPrice}Discount</button>
-           :null   
+            listing.offer?
+            <button className='border bg-green-900 rounded-lg text-white px-[70px] py-3'> $ {listing.regularPrice-listing.discountedPrice} Discount</button>
+           :null 
         }
             
 

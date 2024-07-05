@@ -11,3 +11,5 @@ export const getListings="http://localhost:3000/api/listing/getListing";
 export const getListingById="http://localhost:3000/api/listing/getListingById"; 
 export const updateListingApi="http://localhost:3000/api/listing/updateListing";
 export const deleteListing="http://localhost:3000/api/listing/deleteListing";
+
+export const filteredListings="http://localhost:3000/api/listing/getFilteredListings";

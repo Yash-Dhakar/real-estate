@@ -9,3 +9,7 @@ body{
 .underline-offset {
   text-underline-offset: 2px; /* Adjust this value as needed */
 }
+
+.active{
+  color:green
+}
