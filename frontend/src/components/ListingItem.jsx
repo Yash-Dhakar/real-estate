@@ -11,8 +11,8 @@ function ListingItem({ listing }) {
   };
 
   return (
-    <div className='bg-white shadow-md hover:shadow-lg transition-shadow overflow-hidden rounded-lg w-full sm:w-[330px] flex-grow flex-basis-[calc(33%-1rem)] mb-4'>
-      <Link to={`/show-listing/${listing._id}`} className='flex gap-4 flex-col'>
+    <div className='bg-white shadow-md hover:shadow-lg transition-shadow overflow-hidden rounded-lg w-full sm:w-[330px]'>
+      <Link to={`/show-listing/${listing._id}`}>
         <img 
           src={imageUrl} 
           alt={listing.name} 
@@ -20,13 +20,13 @@ function ListingItem({ listing }) {
           className='h-[320px] sm:h-[220px] w-full object-cover hover:scale-105 transition-scale duration-300'
         />
       </Link>
-      <div className='flex flex-col p-3 gap-4'>
-        <p className='text-base font-medium truncate'>{listing.name}</p>
-        <div className='flex items-center gap-2'>
-          <MdLocationOn className='text-green-700 text-lg' />
-          <p className='text-slate-700 truncate'>{listing.address}</p>
+      <div className='p-3 flex flex-col gap-2 w-full'>
+        <p className='truncate text-lg font-semibold text-slate-700'>{listing.name}</p>
+        <div className='flex items-center gap-1'>
+          <MdLocationOn className='h-4 w-4 text-green-700' />
+          <p className='text-sm text-gray-600 truncate w-full'>{listing.address}</p>
         </div>
-        <p className='line-clamp-2'>{listing.description}</p> 
+        <p className='text-sm text-gray-600 line-clamp-2'>{listing.description}</p> 
         <p className='text-slate-500 font-medium text-lg'>
           {listing.offer ? listing.discountedPrice : listing.regularPrice}
           {listing.type === "rent" ? " /month" : null}
