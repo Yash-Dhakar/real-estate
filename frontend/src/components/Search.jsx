@@ -16,6 +16,8 @@ function Search() {
   const [listings, setListings] = useState([]);
   const navigate = useNavigate();
   const location = useLocation();
+  const [showMore, setShowMore] = useState(false);
+
 
   const handleTypeChange = (newType) => {
     setType(newType);
@@ -28,6 +30,7 @@ function Search() {
   };
 
   useEffect(() => {
+    setShowMore(false);
     const urlParams = new URLSearchParams(location.search);
     setSearchTerm(urlParams.get('searchTerm') || '');
     setType(urlParams.get('type') || 'all');
@@ -41,14 +44,46 @@ function Search() {
     axios.get(filteredListings + `?${urlParams.toString()}`)
       .then((res) => {
         console.log("Filtered data", res.data);
+        if (res.data.length>8){
+          setShowMore(true);
+        }
+        else{
+          setShowMore(false);
+        }
+        
         setListings(res.data);
         setLoading(false);
       })
       .catch((err) => {
         console.log("Filtered listings fetching error", err);
         setLoading(false);
+        setShowMore(false);
+        
       });
   }, [location.search]);
+
+  const handleReadMore=()=>{
+    
+    const startIndex=listings.length;
+    const urlParams=new URLSearchParams(window.location.search);
+    urlParams.set('startIndex',startIndex);
+    axios.get(
+      filteredListings+`?${urlParams.toString()}`
+    )
+    .then(
+      (res)=>{
+        setListings([...listings,...res.data]);
+        if (res.data.length<9){
+          setShowMore(false)
+        }
+        else{
+          setShowMore(true)
+        }
+      }
+    )
+
+
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -173,6 +208,11 @@ function Search() {
               <ListingItem key={listing._id} listing={listing} />
             )
           )}
+          {
+            showMore?
+            <button type='button' onClick={handleReadMore} className='text-green-600 text-lg hover:opacity-85'> Show More ...</button>
+            :null
+          }
         </div>
       </div>
     </div>
