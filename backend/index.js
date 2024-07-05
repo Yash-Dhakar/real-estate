@@ -8,10 +8,13 @@ import cors from "cors";
 import authRouter from "./routes/authRoute.js"; // Corrected import path
 import userRouter from "./routes/userRoute.js";
 import listingRouter from "./routes/listingRoute.js";
+import path from 'path';
 // Load environment variables from .env file
 dotenv.config();
 
 const app = express();
+
+const __dirname = path.resolve();
 
 
 app.use(cors());
@@ -21,6 +24,11 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use('/api/auth', authRouter);
 app.use('/api/user', userRouter);
 app.use('/api/listing',listingRouter);
+
+app.use(express.static(path.join(__dirname, '/frontend/dist')));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'frontend', 'dist', 'index.html'));
+})
 
 
 
