@@ -13,8 +13,17 @@ import listingRouter from './routes/listingRoute.js';
 
 const app = express();
 const __dirname = path.resolve();
+// Set up CORS options
+const corsOptions = {
+  origin: 'https://estateelite-5e5l.onrender.com',
+  optionsSuccessStatus: 200,
+  credentials: true
+};
 
-app.use(cors());
+app.use(cors(corsOptions));
+
+
+// app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 

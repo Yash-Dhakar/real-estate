@@ -36,7 +36,7 @@ function QAuth() {
         .catch(
             (err)=>{
                 
-                console.log(err.message);
+                console.log("Error in google authentication",err.message);
             }
         )
         
