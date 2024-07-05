@@ -56,7 +56,7 @@ function CreateListing() {
     } else {
       setImageUploadError('You can upload up to 6 images per listing');
       console.log('Please select between 1 to 6 files.');
-      setFiles(null);
+      // setFiles(null);
       setUploading(false);
     }
   };

@@ -103,7 +103,7 @@ function Listing() {
         
   <p className='text-3xl font-semibold my-4'>
     {listing.name} - $
-    {listing.offer ? listing.discountedPrice : listing.regularPrice}
+    {listing.offer ? listing.discountedPrice.toLocaleString('en-US') : listing.regularPrice.toLocaleString('en-US')}
     {listing.type === "rent" ? " /month" : null}
   </p>
 
@@ -118,7 +118,7 @@ function Listing() {
            {listing.type=="rent"?" Rent":' Sell'}  </button>
            {
             listing.offer?
-            <button className='border bg-green-900 rounded-lg text-white px-[70px] py-3'> $ {listing.regularPrice-listing.discountedPrice} Discount</button>
+            <button className='border bg-green-900 rounded-lg text-white px-[70px] py-3'> $ {(listing.regularPrice-listing.discountedPrice).toLocaleString('en-US')} Discount</button>
            :null 
         }
             
