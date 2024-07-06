@@ -162,7 +162,7 @@ function CreateListing() {
           <input type="text" placeholder='Name' className='border p-3 rounded-lg' value={name} onChange={(e) => setName(e.target.value)} />
           <textarea className='border p-3 rounded-lg' placeholder='Description' value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
           <input type="text" placeholder='Address' className='border p-3 rounded-lg' value={address} onChange={(e) => setAddress(e.target.value)} />
-          <div className='flex gap-4'>
+          <div className='flex gap-4 flex-wrap'>
             <div className='flex gap-2'>
               <input type="checkbox" className='w-6 h-6' checked={type === 'sell'} onChange={() => handleCheckboxChange('sell')} />
               <span className='text-lg'>Sell</span>

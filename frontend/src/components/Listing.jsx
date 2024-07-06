@@ -101,7 +101,7 @@ function Listing() {
           )}
           <div className='flex flex-col gap-6 p-3 my-7 max-w-4xl mx-auto'>
         
-  <p className='text-3xl font-semibold my-4'>
+  <p className='text-xl md:text-3xl font-medium md:font-semibold my-4'>
     {listing.name} - $
     {listing.offer ? listing.discountedPrice.toLocaleString('en-US') : listing.regularPrice.toLocaleString('en-US')}
     {listing.type === "rent" ? " /month" : null}
