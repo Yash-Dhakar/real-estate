@@ -25,7 +25,7 @@ function Signup() {
   const handleSubmit=(e)=>{
     setLoading(true);
     e.preventDefault();
-    axios.post(signup,userDetails)
+    axios.post("http://localhost:3000/api/auth/signup",userDetails)
     .then(
       ()=>{
         setName("");

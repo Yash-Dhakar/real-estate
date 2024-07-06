@@ -1,15 +1,14 @@
-export const signup="http://localhost:3000/api/auth/signup";
-export const signin="http://localhost:3000/api/auth/signin";
-export const google="http://localhost:3000/api/auth/google";
-export const update="http://localhost:3000/api/user/update";
-export const getDetails="http://localhost:3000/api/user/getDetails";
-
-export const deleteAPI="http://localhost:3000/api/user/delete";
-export const signOut="http://localhost:3000/api/auth/signout";
-export const createListing="http://localhost:3000/api/listing/create";
-export const getListings="http://localhost:3000/api/listing/getListing";
-export const getListingById="http://localhost:3000/api/listing/getListingById"; 
-export const updateListingApi="http://localhost:3000/api/listing/updateListing";
-export const deleteListing="http://localhost:3000/api/listing/deleteListing";
-
-export const filteredListings="http://localhost:3000/api/listing/getFilteredListings";
+const baseURL="https://estateelite-5e5l.onrender.com";
+export const signup = `${baseURL}/api/auth/signup`;
+export const signin = `${baseURL}/api/auth/signin`;
+export const google = `${baseURL}/api/auth/google`;
+export const update = `${baseURL}/api/user/update`;
+export const getDetails = `${baseURL}/api/user/getDetails`;
+export const deleteAPI = `${baseURL}/api/user/delete`;
+export const signOut = `${baseURL}/api/auth/signout`;
+export const createListing = `${baseURL}/api/listing/create`;
+export const getListings = `${baseURL}/api/listing/getListing`;
+export const getListingById = `${baseURL}/api/listing/getListingById`;
+export const updateListingApi = `${baseURL}/api/listing/updateListing`;
+export const deleteListing = `${baseURL}/api/listing/deleteListing`;
+export const filteredListings = `${baseURL}/api/listing/getFilteredListings`;
