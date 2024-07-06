@@ -28,7 +28,8 @@ function ListingItem({ listing }) {
         </div>
         <p className='text-sm text-gray-600 line-clamp-2'>{listing.description}</p> 
         <p className='text-slate-500 font-medium text-lg'>
-          {listing.offer ? listing.discountedPrice : listing.regularPrice}
+            $
+          {listing.offer ? listing.discountedPrice.toLocaleString('en-US') : listing.regularPrice.toLocaleString('en-US')}
           {listing.type === "rent" ? " /month" : null}
         </p>
         <div className='flex gap-2 font-semibold'>

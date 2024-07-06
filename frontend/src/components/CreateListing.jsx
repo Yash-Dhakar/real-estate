@@ -186,12 +186,12 @@ function CreateListing() {
           </div>
           <div className='flex flex-wrap gap-8 items-center'>
             <div className='flex gap-2 items-center'>
-              <input type="number" className='w-14 h-14 p-3 border border-gray-300 rounded-lg' value={bedrooms} onChange={(e) => setBedrooms(e.target.value)} />
+              <input type="number" min={0} className='w-14 h-14 p-3 border border-gray-300 rounded-lg' value={bedrooms} onChange={(e) => setBedrooms(e.target.value)} />
               <span className='text-lg'>beds</span>
             </div>
             <div className='flex gap-2 items-center'>
               <input type="number" className='w-14 h-14 p-3 border rounded-lg' value={bathrooms} onChange={(e) => setBathrooms(e.target.value)} />
-              <span className='text-lg'>Baths</span>
+              <span className='text-lg' min={0}>Baths</span>
             </div>
           </div>
           <div className='flex items-center gap-3'>
