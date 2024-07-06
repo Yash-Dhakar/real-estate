@@ -15,6 +15,9 @@ export default function Contact({ listing }) {
         const res = await fetch(getDetails+ `?_id=${listing.userRef}`);
         const data = await res.json();
         setLandlord(data);
+        // console.log("Landlord data",data);
+        // console.log("Landlord name",landlord.username);
+        // console.log("Landlord email",landlord.email);
 
       } catch (error) {
         console.log(error);

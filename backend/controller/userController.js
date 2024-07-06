@@ -68,7 +68,8 @@ export const deleteUser = async (req, res) => {
   export const getUser = async (req, res, next) => {
     try {
       
-      const user = await User.findById(req.params.id);
+      const user = await User.findById(req.query._id);
+      console.log("_id",req.query._id)
     
       if (!user) return res.status(404).json({ status: "User not found" });
     
