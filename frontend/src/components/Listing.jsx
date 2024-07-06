@@ -114,11 +114,11 @@ function Listing() {
             <span className='text-slate-500 font-medium text-lg'>{listing.address}</span>
            </p>
           <div className='flex gap-3'>
-           <button className='border bg-red-800 rounded-lg text-white px-[70px] py-3'>For
+           <button className='border bg-red-800 rounded-lg text-white px-4 md:px-[70px] py-3'>For
            {listing.type=="rent"?" Rent":' Sell'}  </button>
            {
             listing.offer?
-            <button className='border bg-green-900 rounded-lg text-white px-[70px] py-3'> $ {(listing.regularPrice-listing.discountedPrice).toLocaleString('en-US')} Discount</button>
+            <button className='border bg-green-900 rounded-lg text-white px-4 md:px-[70px] py-3'> $ {(listing.regularPrice-listing.discountedPrice).toLocaleString('en-US')} Discount</button>
            :null 
         }
             

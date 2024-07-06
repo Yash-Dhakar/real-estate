@@ -74,7 +74,7 @@ function Signup() {
 
   }
   return (
-    <div className='my-7 flex flex-col gap-5 max-w-lg mx-auto'>
+    <div className='my-7 flex flex-col gap-5 max-w-lg mx-auto p-4 md:p-0'>
       <h2 className='text-4xl font-semibold text-center'>Signup</h2>
       <form className='flex flex-col gap-4' >
         <input type="text" placeholder='Username' value={name} onChange={(e)=>setName(e.target.value)} className='border rounded-lg p-3' />

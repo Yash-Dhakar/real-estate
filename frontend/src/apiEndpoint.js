@@ -1,4 +1,5 @@
 const baseURL="https://estateelite-5e5l.onrender.com";
+// const baseURL="http://localhost:3000";
 export const signup = `${baseURL}/api/auth/signup`;
 export const signin = `${baseURL}/api/auth/signin`;
 export const google = `${baseURL}/api/auth/google`;

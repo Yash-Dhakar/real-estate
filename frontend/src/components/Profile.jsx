@@ -209,7 +209,7 @@ function Profile() {
   }, [file]);
 
   return (
-    <div className="flex flex-col max-w-lg mx-auto gap-6">
+    <div className="flex flex-col max-w-lg mx-auto gap-6 p-4 md:p-0">
       <h2 className="text-4xl font-semibold text-center my-8">Profile</h2>
       <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
         <input

@@ -50,7 +50,7 @@ function Signin() {
       });
   };
   return (
-    <div className="flex flex-col gap-5 max-w-lg mx-auto my-7">
+    <div className="flex flex-col gap-5 max-w-lg mx-auto my-7 p-4 md:p-0">
       <h2 className="text-4xl font-semibold text-center">Sign In</h2>
       <form className="flex flex-col gap-5">
         <input
